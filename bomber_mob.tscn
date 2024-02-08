@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://capheqgoihl4w"]
+
+[ext_resource type="Texture2D" uid="uid://bk0n1amp8yk2r" path="res://sprites/shmup-bomber-ship.png" id="1_2wk1r"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bgukc"]
+radius = 7.0
+height = 28.0
+
+[node name="BomberMob" type="Area2D"]
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_2wk1r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bgukc")

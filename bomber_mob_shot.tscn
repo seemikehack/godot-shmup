@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0j0q27fqfmdg"]
+
+[ext_resource type="Texture2D" uid="uid://buu50o01nylsn" path="res://sprites/shmup-bomb-shot.png" id="1_lyslw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4patq"]
+radius = 9.0
+height = 24.0
+
+[node name="BomberMobShot" type="RigidBody2D"]
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_lyslw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_4patq")
