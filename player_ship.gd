@@ -3,11 +3,15 @@ extends Area2D
 signal hit
 
 @export var speed = 250 # pixels per second
+@export var heat_capacity = 25;
 @export var player_shot_scene: PackedScene
-# TODO add special scene
+# @export var player_special_scene: PackedScene # TODO
+
+const FIRE_RATES = [ 0.25, 0.2, 0.1 ]
+const HEAT_RATE = 0.25
 
 var screen_size
-var fire_speed
+var fire_rate
 var heat
 var has_special
 
@@ -15,7 +19,7 @@ var has_special
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
-	hide()
+	#hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,7 +38,7 @@ func _process(delta):
 	if Input.is_action_pressed("special"):
 		special()
 	if Input.is_action_pressed("fire_rate"):
-		fire_rate()
+		change_fire_rate()
 
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
@@ -45,6 +49,8 @@ func _process(delta):
 
 
 func _on_body_entered(_body):
+	# TODO implement HP (e.g., takes X hits to kill the player)
+	# FIXME ship and player shot are on the same collision layer
 	hide()
 	hit.emit()
 	$CollisionShape2D.set_deferred("disabled", true)
@@ -63,10 +69,10 @@ func shoot():
 	if !$ShotTimer.is_stopped():
 		return
 	var shot = player_shot_scene.instantiate()
-	shot.position = position
-	shot.linear_velocity = Vector2.UP # FIXME placeholder vector
+	shot.position = position - Vector2(0, 50) # crudely shift the shot forward
+	shot.linear_velocity = Vector2.UP * 350 # TODO parameterize shot speed
 	# TODO increment heat according to fire rate
-	get_tree().current_child.add_child(shot)
+	get_tree().current_scene.add_child(shot)
 	$ShotTimer.start()
 
 
@@ -78,6 +84,6 @@ func special():
 	pass
 
 
-func fire_rate():
+func change_fire_rate():
 	# TODO implement
 	pass

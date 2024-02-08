@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlu610q2oti6f"]
+[gd_scene load_steps=5 format=3 uid="uid://dlu610q2oti6f"]
 
 [ext_resource type="Script" path="res://player_ship.gd" id="1_eqyth"]
 [ext_resource type="Texture2D" uid="uid://qbem4chfcet4" path="res://sprites/shmup-player-ship.png" id="2_c7c8k"]
+[ext_resource type="PackedScene" uid="uid://dxco1ndrd4dom" path="res://player_shot.tscn" id="2_y31y1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1n4fu"]
 height = 52.0
 
 [node name="PlayerShip" type="Area2D"]
 script = ExtResource("1_eqyth")
+player_shot_scene = ExtResource("2_y31y1")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -18,6 +20,7 @@ texture = ExtResource("2_c7c8k")
 shape = SubResource("CapsuleShape2D_1n4fu")
 
 [node name="ShotTimer" type="Timer" parent="."]
+wait_time = 0.25
 one_shot = true
 
 [node name="HeatTimer" type="Timer" parent="."]
