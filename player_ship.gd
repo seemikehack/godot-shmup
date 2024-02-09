@@ -19,6 +19,7 @@ var has_special
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
+	position = Vector2(300,800) # HACK just for debugging
 	#hide()
 
 
@@ -50,10 +51,9 @@ func _process(delta):
 
 func _on_body_entered(_body):
 	# TODO implement HP (e.g., takes X hits to kill the player)
-	# FIXME ship and player shot are on the same collision layer
 	hide()
 	hit.emit()
-	$CollisionShape2D.set_deferred("disabled", true)
+	$CollisionPolygon2D.set_deferred("disabled", true)
 
 
 # TODO handle heat: dissipation timer, overload and fire suppression, etc.
@@ -69,7 +69,7 @@ func shoot():
 	if !$ShotTimer.is_stopped():
 		return
 	var shot = player_shot_scene.instantiate()
-	shot.position = position - Vector2(0, 50) # crudely shift the shot forward
+	shot.position = position + Vector2(0, -25) # crudely shift shot ahead of ship
 	shot.linear_velocity = Vector2.UP * 350 # TODO parameterize shot speed
 	# TODO increment heat according to fire rate
 	get_tree().current_scene.add_child(shot)

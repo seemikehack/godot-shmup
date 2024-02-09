@@ -1,17 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfrbk33r5yxpj"]
+[gd_scene load_steps=2 format=3 uid="uid://cfrbk33r5yxpj"]
 
-[ext_resource type="Texture2D" uid="uid://ceiin84weti6p" path="res://sprites/shmup-cannon-shot.png" id="1_hjl0e"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_tsur1"]
-radius = 7.0
+[ext_resource type="Texture2D" uid="uid://dfjng5jsq4spw" path="res://sprites/ship_B.png" id="1_roxqw"]
 
 [node name="CannonMobShot" type="RigidBody2D"]
-collision_mask = 0
+collision_layer = 8
+gravity_scale = 0.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("1_hjl0e")
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_roxqw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_tsur1")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 7, -4, -4, 0, -8, 4, -4)

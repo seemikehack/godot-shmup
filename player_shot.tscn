@@ -1,19 +1,20 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxco1ndrd4dom"]
 
-[ext_resource type="Texture2D" uid="uid://7cd2ht7f0m4g" path="res://sprites/shmup-player-shot.png" id="1_whg4f"]
+[ext_resource type="Texture2D" uid="uid://d0itqshxghhnv" path="res://sprites/star_tiny.png" id="1_arlpl"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wll57"]
-radius = 6.0
-height = 20.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mh13w"]
+size = Vector2(10.7071, 10.7071)
 
 [node name="PlayerShot" type="RigidBody2D"]
-collision_mask = 0
+collision_layer = 2
+collision_mask = 4
 gravity_scale = 0.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_whg4f")
+texture = ExtResource("1_arlpl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_wll57")
+rotation = 0.785398
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_mh13w")

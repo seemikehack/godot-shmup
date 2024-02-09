@@ -1,0 +1,13 @@
+[gd_scene load_steps=5 format=3 uid="uid://b01pfu6fbqpss"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_ai248"]
+[ext_resource type="PackedScene" uid="uid://dlu610q2oti6f" path="res://player_ship.tscn" id="1_mnvdk"]
+[ext_resource type="PackedScene" uid="uid://dbt7lmivfsun7" path="res://cannon_mob.tscn" id="2_3xevo"]
+[ext_resource type="PackedScene" uid="uid://capheqgoihl4w" path="res://bomber_mob.tscn" id="3_pokem"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_ai248")
+cannon_mob_scene = ExtResource("2_3xevo")
+bomber_mob_scene = ExtResource("3_pokem")
+
+[node name="PlayerShip" parent="." instance=ExtResource("1_mnvdk")]

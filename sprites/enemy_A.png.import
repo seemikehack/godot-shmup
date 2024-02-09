@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buu50o01nylsn"
-path="res://.godot/imported/shmup-bomb-shot.png-aba7625269302c8ed0de9e4c12f02b59.ctex"
+uid="uid://7xydeowmwkdb"
+path="res://.godot/imported/enemy_A.png-3464cd9207f52ad07f4b2dec140dcdf0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/shmup-bomb-shot.png"
-dest_files=["res://.godot/imported/shmup-bomb-shot.png-aba7625269302c8ed0de9e4c12f02b59.ctex"]
+source_file="res://sprites/enemy_A.png"
+dest_files=["res://.godot/imported/enemy_A.png-3464cd9207f52ad07f4b2dec140dcdf0.ctex"]
 
 [params]
 

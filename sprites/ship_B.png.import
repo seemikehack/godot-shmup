@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk0n1amp8yk2r"
-path="res://.godot/imported/shmup-bomber-ship.png-b4f1ae5d6b6463da346c0c6e9ee56a0f.ctex"
+uid="uid://dfjng5jsq4spw"
+path="res://.godot/imported/ship_B.png-5876e20d2e6545c65c43e5e8eef63708.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/shmup-bomber-ship.png"
-dest_files=["res://.godot/imported/shmup-bomber-ship.png-b4f1ae5d6b6463da346c0c6e9ee56a0f.ctex"]
+source_file="res://sprites/ship_B.png"
+dest_files=["res://.godot/imported/ship_B.png-5876e20d2e6545c65c43e5e8eef63708.ctex"]
 
 [params]
 

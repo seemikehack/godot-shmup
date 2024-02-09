@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ceiin84weti6p"
-path="res://.godot/imported/shmup-cannon-shot.png-7b14d312211c5116df56aad2a8d82f62.ctex"
+uid="uid://0awmn0qfi0he"
+path="res://.godot/imported/meteor_small.png-f8feab7e17339e9aca727901142b2d73.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/shmup-cannon-shot.png"
-dest_files=["res://.godot/imported/shmup-cannon-shot.png-7b14d312211c5116df56aad2a8d82f62.ctex"]
+source_file="res://sprites/meteor_small.png"
+dest_files=["res://.godot/imported/meteor_small.png-f8feab7e17339e9aca727901142b2d73.ctex"]
 
 [params]
 

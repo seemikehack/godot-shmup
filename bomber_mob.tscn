@@ -1,20 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://capheqgoihl4w"]
+[gd_scene load_steps=5 format=3 uid="uid://capheqgoihl4w"]
 
-[ext_resource type="Texture2D" uid="uid://bk0n1amp8yk2r" path="res://sprites/shmup-bomber-ship.png" id="1_2wk1r"]
+[ext_resource type="Texture2D" uid="uid://cjo75m0xwry6o" path="res://sprites/enemy_C.png" id="1_4sfpi"]
+[ext_resource type="Script" path="res://bomber_mob.gd" id="1_ss28r"]
+[ext_resource type="PackedScene" uid="uid://c0j0q27fqfmdg" path="res://bomber_mob_shot.tscn" id="2_lvkey"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bgukc"]
-radius = 7.0
-height = 28.0
+height = 56.0
 
 [node name="BomberMob" type="Area2D"]
-collision_mask = 0
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_ss28r")
+mob_shot_scene = ExtResource("2_lvkey")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_2wk1r")
+rotation = 3.14159
+texture = ExtResource("1_4sfpi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_bgukc")
+
+[node name="ShotTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="ShotTimer" to="." method="_on_shot_timer_timeout"]

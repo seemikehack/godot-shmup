@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qbem4chfcet4"
-path="res://.godot/imported/shmup-player-ship.png-ab69bc50397a2c523de81fdabfc0d349.ctex"
+uid="uid://cjo75m0xwry6o"
+path="res://.godot/imported/enemy_C.png-b4ef2e3a8081809fb29565a64f473aca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/shmup-player-ship.png"
-dest_files=["res://.godot/imported/shmup-player-ship.png-ab69bc50397a2c523de81fdabfc0d349.ctex"]
+source_file="res://sprites/enemy_C.png"
+dest_files=["res://.godot/imported/enemy_C.png-b4ef2e3a8081809fb29565a64f473aca.ctex"]
 
 [params]
 

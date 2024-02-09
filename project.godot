@@ -68,6 +68,13 @@ fire_rate={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player Ship"
+2d_physics/layer_2="Player Shot"
+2d_physics/layer_3="Enemy Ship"
+2d_physics/layer_4="Enemy Shot"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
