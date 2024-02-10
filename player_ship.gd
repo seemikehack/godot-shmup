@@ -7,6 +7,7 @@ signal hit
 @export var player_shot_scene: PackedScene
 # @export var player_special_scene: PackedScene # TODO
 
+const SHOT_SPEED = 350
 const FIRE_RATES = [ 0.25, 0.2, 0.1 ]
 const HEAT_RATE = 0.25
 
@@ -19,7 +20,6 @@ var has_special
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
-	position = Vector2(300,800) # HACK just for debugging
 	#hide()
 
 
@@ -54,6 +54,7 @@ func _on_body_entered(_body):
 	hide()
 	hit.emit()
 	$CollisionPolygon2D.set_deferred("disabled", true)
+	# FIXME input is still processed after ship is hit and hidden
 
 
 # TODO handle heat: dissipation timer, overload and fire suppression, etc.
@@ -70,7 +71,7 @@ func shoot():
 		return
 	var shot = player_shot_scene.instantiate()
 	shot.position = position + Vector2(0, -25) # crudely shift shot ahead of ship
-	shot.linear_velocity = Vector2.UP * 350 # TODO parameterize shot speed
+	shot.linear_velocity = Vector2.UP * SHOT_SPEED
 	# TODO increment heat according to fire rate
 	get_tree().current_scene.add_child(shot)
 	$ShotTimer.start()
@@ -80,7 +81,7 @@ func special():
 	# TODO implement
 	# instantiate
 	# position, rotation, linear_velocity
-	# add_child()
+	# add_c
 	pass
 
 

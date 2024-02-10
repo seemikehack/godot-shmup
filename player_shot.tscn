@@ -1,20 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxco1ndrd4dom"]
+[gd_scene load_steps=4 format=3 uid="uid://dxco1ndrd4dom"]
 
 [ext_resource type="Texture2D" uid="uid://d0itqshxghhnv" path="res://sprites/star_tiny.png" id="1_arlpl"]
+[ext_resource type="Script" path="res://player_shot.gd" id="1_x070q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mh13w"]
-size = Vector2(10.7071, 10.7071)
+size = Vector2(7.98007, 7.98008)
 
 [node name="PlayerShot" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 4
 gravity_scale = 0.0
+script = ExtResource("1_x070q")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("1_arlpl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 0.785398
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_mh13w")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

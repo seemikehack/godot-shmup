@@ -23,3 +23,8 @@ func _on_shot_timer_timeout():
 	shot.position = position + Vector2(0,25) # crudely shift shot ahead of ship
 	shot.linear_velocity = Vector2.DOWN * 150 # TODO parameterize shot speed
 	get_tree().current_scene.add_child(shot)
+
+
+func _on_body_entered(body):
+	hit.emit()
+	queue_free()

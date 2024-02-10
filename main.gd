@@ -2,8 +2,11 @@ extends Node
 
 @export var cannon_mob_scene: PackedScene
 @export var bomber_mob_scene: PackedScene
+
 const PLAYER_START_POS = Vector2(300,800)
+
 var score
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -3,6 +3,7 @@ extends Area2D
 signal hit
 
 @export var mob_shot_scene: PackedScene
+
 const SHOT_CHANCE = 0.25
 const FIRE_RATE = 0.125
 
@@ -26,3 +27,8 @@ func _on_shot_timer_timeout():
 		shot.linear_velocity = Vector2.DOWN * 500 # TODO parameterize shot speed
 		get_tree().current_scene.add_child(shot)
 		await get_tree().create_timer(FIRE_RATE).timeout
+
+
+func _on_body_entered(body):
+	hit.emit()
+	queue_free()
