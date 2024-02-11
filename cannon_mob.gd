@@ -24,11 +24,10 @@ func _on_shot_timer_timeout():
 	for i in 3:
 		var shot = mob_shot_scene.instantiate()
 		shot.position = position + Vector2(0,25) # crudely shift shot ahead of ship
-		shot.linear_velocity = Vector2.DOWN * 500 # TODO parameterize shot speed
 		get_tree().current_scene.add_child(shot)
 		await get_tree().create_timer(FIRE_RATE).timeout
 
 
-func _on_body_entered(body):
+func _on_area_entered(_area):
 	hit.emit()
 	queue_free()

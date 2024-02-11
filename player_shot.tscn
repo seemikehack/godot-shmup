@@ -6,10 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mh13w"]
 size = Vector2(7.98007, 7.98008)
 
-[node name="PlayerShot" type="RigidBody2D"]
+[node name="PlayerShot" type="Area2D"]
 collision_layer = 2
 collision_mask = 4
-gravity_scale = 0.0
 script = ExtResource("1_x070q")
 metadata/_edit_group_ = true
 
@@ -21,4 +20,4 @@ texture = ExtResource("1_arlpl")
 rotation = 0.785398
 shape = SubResource("RectangleShape2D_mh13w")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

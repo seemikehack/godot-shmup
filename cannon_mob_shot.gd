@@ -1,6 +1,6 @@
 extends Area2D
 
-const SHOT_SPEED = 150
+const SHOT_SPEED = 500
 
 var velocity
 
@@ -13,7 +13,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position += velocity * delta
-	velocity *= 1.03 # this projectile speeds up over time
 
 
 func _on_area_entered(_area):

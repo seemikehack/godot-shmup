@@ -1,10 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfrbk33r5yxpj"]
+[gd_scene load_steps=3 format=3 uid="uid://cfrbk33r5yxpj"]
 
 [ext_resource type="Texture2D" uid="uid://dfjng5jsq4spw" path="res://sprites/ship_B.png" id="1_roxqw"]
+[ext_resource type="Script" path="res://cannon_mob_shot.gd" id="1_wpg8n"]
 
-[node name="CannonMobShot" type="RigidBody2D"]
+[node name="CannonMobShot" type="Area2D"]
 collision_layer = 8
-gravity_scale = 0.0
+script = ExtResource("1_wpg8n")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -14,3 +15,5 @@ texture = ExtResource("1_roxqw")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(0, 7, -4, -4, 0, -8, 4, -4)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

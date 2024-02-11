@@ -23,4 +23,4 @@ one_shot = true
 [node name="HeatTimer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

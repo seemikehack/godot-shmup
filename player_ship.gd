@@ -7,7 +7,6 @@ signal hit
 @export var player_shot_scene: PackedScene
 # @export var player_special_scene: PackedScene # TODO
 
-const SHOT_SPEED = 350
 const FIRE_RATES = [ 0.25, 0.2, 0.1 ]
 const HEAT_RATE = 0.25
 
@@ -49,7 +48,7 @@ func _process(delta):
 	position = position.clamp(Vector2.ZERO, screen_size)
 
 
-func _on_body_entered(_body):
+func _on_area_entered(_area):
 	# TODO implement HP (e.g., takes X hits to kill the player)
 	hide()
 	hit.emit()
@@ -71,7 +70,6 @@ func shoot():
 		return
 	var shot = player_shot_scene.instantiate()
 	shot.position = position + Vector2(0, -25) # crudely shift shot ahead of ship
-	shot.linear_velocity = Vector2.UP * SHOT_SPEED
 	# TODO increment heat according to fire rate
 	get_tree().current_scene.add_child(shot)
 	$ShotTimer.start()
