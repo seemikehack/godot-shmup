@@ -65,7 +65,7 @@ func _on_area_entered(_area):
 func start(pos):
 	position = pos
 	show()
-	$CollisionShape2D.disabled = false
+	$CollisionPolygon2D.disabled = false
 
 
 func shoot():
