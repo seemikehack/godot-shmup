@@ -3,6 +3,7 @@ extends Area2D
 signal hit
 
 @export var mob_shot_scene: PackedScene
+
 const SHOT_CHANCE = 0.25
 
 
@@ -27,3 +28,4 @@ func _on_shot_timer_timeout():
 func _on_area_entered(_area):
 	hit.emit()
 	queue_free()
+	pass

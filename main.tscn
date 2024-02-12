@@ -1,13 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://b01pfu6fbqpss"]
+[gd_scene load_steps=6 format=3 uid="uid://b01pfu6fbqpss"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ai248"]
 [ext_resource type="PackedScene" uid="uid://dlu610q2oti6f" path="res://player_ship.tscn" id="1_mnvdk"]
 [ext_resource type="PackedScene" uid="uid://dbt7lmivfsun7" path="res://cannon_mob.tscn" id="2_3xevo"]
 [ext_resource type="PackedScene" uid="uid://capheqgoihl4w" path="res://bomber_mob.tscn" id="3_pokem"]
+[ext_resource type="PackedScene" uid="uid://cs0yy28sr1632" path="res://hud.tscn" id="5_yqjkw"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_ai248")
-cannon_mob_scene = ExtResource("2_3xevo")
-bomber_mob_scene = ExtResource("3_pokem")
 
 [node name="PlayerShip" parent="." instance=ExtResource("1_mnvdk")]
+
+[node name="CannonMob" parent="." instance=ExtResource("2_3xevo")]
+
+[node name="BomberMob" parent="." instance=ExtResource("3_pokem")]
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="HUD" parent="." instance=ExtResource("5_yqjkw")]
+
+[connection signal="hit" from="PlayerShip" to="." method="game_over"]
+[connection signal="hit" from="CannonMob" to="." method="_on_cannon_mob_hit"]
+[connection signal="hit" from="BomberMob" to="." method="_on_bomber_mob_hit"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]

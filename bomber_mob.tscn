@@ -7,7 +7,7 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bgukc"]
 height = 56.0
 
-[node name="BomberMob" type="Area2D"]
+[node name="BomberMob" type="Area2D" groups=["mobs"]]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_ss28r")
