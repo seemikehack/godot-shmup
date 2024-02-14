@@ -26,7 +26,7 @@ func update_score(score):
 
 
 func update_heat(heat):
-	$Heat.text = str(heat)
+	$Heat.text = "%04.2f" % heat
 
 
 func update_fire_rate(rate):

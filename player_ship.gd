@@ -3,10 +3,12 @@ extends Area2D
 signal hit
 signal shots_fired
 signal fire_rate_changed
+signal heat_dissipated
 
 @export var speed = 250 # pixels per second
 @export var heat_capacity = 25;
 @export var heat_rate = 0.25
+@export var heat_dissipation_rate = 0.5
 @export var player_shot_scene: PackedScene
 # @export var player_special_scene: PackedScene # TODO
 
@@ -93,3 +95,9 @@ func change_fire_rate():
 	$ShotTimer.wait_time = FIRE_RATES[fire_rate]
 	# FIXME need to alert the HUD
 	fire_rate_changed.emit(FIRE_RATE_STRS[fire_rate])
+
+
+func _on_heat_timer_timeout():
+	heat -= heat_dissipation_rate
+	heat = clampf(heat, 0, heat_capacity)
+	heat_dissipated.emit(heat)

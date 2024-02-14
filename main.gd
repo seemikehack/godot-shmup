@@ -49,6 +49,10 @@ func _on_player_ship_fire_rate_changed(fire_rate):
 	$HUD.update_fire_rate(fire_rate)
 
 
+func _on_player_ship_heat_dissipated(heat):
+	$HUD.update_heat(heat)
+
+
 func game_over():
 	$HUD.show_game_over()
 
