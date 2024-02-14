@@ -41,12 +41,12 @@ func _on_mob_timer_timeout():
 	pass # Replace with function body.
 
 
-func _on_player_ship_fire_rate_changed():
-	$HUD.update_heat($PlayerShip.heat)
+func _on_player_ship_shots_fired(heat):
+	$HUD.update_heat(heat)
 
 
-func _on_player_ship_shots_fired():
-	$HUD.update_fire_rate($PlayerShip.FIRE_RATE_STRS[$PlayerShip.fire_rate])
+func _on_player_ship_fire_rate_changed(fire_rate):
+	$HUD.update_fire_rate(fire_rate)
 
 
 func game_over():

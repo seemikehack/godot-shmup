@@ -80,7 +80,7 @@ func shoot():
 	$ShotTimer.start()
 	heat += heat_rate
 	# FIXME need to alert the HUD
-	shots_fired.emit()
+	shots_fired.emit(heat)
 
 
 func special():
@@ -92,4 +92,4 @@ func change_fire_rate():
 	fire_rate = fire_rate + 1 if fire_rate < 2 else 0
 	$ShotTimer.wait_time = FIRE_RATES[fire_rate]
 	# FIXME need to alert the HUD
-	fire_rate_changed.emit()
+	fire_rate_changed.emit(FIRE_RATE_STRS[fire_rate])
