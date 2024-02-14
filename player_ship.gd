@@ -64,7 +64,15 @@ func _on_area_entered(_area):
 	# FIXME input is still processed after ship is hit and hidden
 
 
-# TODO handle heat: dissipation timer, overload and fire suppression, etc.
+func _on_heat_timer_timeout():
+	heat -= heat_dissipation_rate
+	heat = clampf(heat, 0, heat_capacity)
+	heat_dissipated.emit(heat)
+	if heat == 0:
+		$HeatTimer.stop() 
+
+
+# TODO handle heat overload and fire suppression
 
 
 func start(pos):
@@ -83,6 +91,8 @@ func shoot():
 	heat += heat_rate
 	# FIXME need to alert the HUD
 	shots_fired.emit(heat)
+	if $HeatTimer.is_stopped():
+		$HeatTimer.start()
 
 
 func special():
@@ -95,9 +105,3 @@ func change_fire_rate():
 	$ShotTimer.wait_time = FIRE_RATES[fire_rate]
 	# FIXME need to alert the HUD
 	fire_rate_changed.emit(FIRE_RATE_STRS[fire_rate])
-
-
-func _on_heat_timer_timeout():
-	heat -= heat_dissipation_rate
-	heat = clampf(heat, 0, heat_capacity)
-	heat_dissipated.emit(heat)
