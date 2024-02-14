@@ -1,14 +1,17 @@
 extends Area2D
 
 signal hit
+signal shots_fired
+signal fire_rate_changed
 
 @export var speed = 250 # pixels per second
 @export var heat_capacity = 25;
+@export var heat_rate = 0.25
 @export var player_shot_scene: PackedScene
 # @export var player_special_scene: PackedScene # TODO
 
 const FIRE_RATES = [ 0.25, 0.125, 0.0625 ]
-const HEAT_RATE = 0.25
+const FIRE_RATE_STRS = [ "Slo", "Med", "Fst" ]
 
 var screen_size
 var fire_rate
@@ -27,6 +30,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# TODO store velocity externally so we can do deceleration
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= 1
@@ -47,7 +51,6 @@ func _process(delta):
 		velocity = velocity.normalized() * speed
 
 	position += velocity * delta
-	# TODO clamp to bottom half of screen only
 	position = position.clamp(Vector2.ZERO, screen_size)
 
 
@@ -73,19 +76,20 @@ func shoot():
 		return
 	var shot = player_shot_scene.instantiate()
 	shot.position = position + Vector2(0, -25) # crudely shift shot ahead of ship
-	# TODO increment heat according to fire rate
 	get_tree().current_scene.add_child(shot)
 	$ShotTimer.start()
+	heat += heat_rate
+	# FIXME need to alert the HUD
+	shots_fired.emit()
 
 
 func special():
 	# TODO implement
-	# instantiate
-	# position, rotation, linear_velocity
-	# add_c
 	pass
 
 
 func change_fire_rate():
 	fire_rate = fire_rate + 1 if fire_rate < 2 else 0
 	$ShotTimer.wait_time = FIRE_RATES[fire_rate]
+	# FIXME need to alert the HUD
+	fire_rate_changed.emit()

@@ -28,4 +28,3 @@ func _on_shot_timer_timeout():
 func _on_area_entered(_area):
 	hit.emit()
 	queue_free()
-	pass

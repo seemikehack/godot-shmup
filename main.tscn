@@ -22,7 +22,9 @@ wait_time = 3.0
 
 [node name="HUD" parent="." instance=ExtResource("5_yqjkw")]
 
+[connection signal="fire_rate_changed" from="PlayerShip" to="." method="_on_player_ship_fire_rate_changed"]
 [connection signal="hit" from="PlayerShip" to="." method="game_over"]
+[connection signal="shots_fired" from="PlayerShip" to="." method="_on_player_ship_shots_fired"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]

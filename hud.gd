@@ -7,7 +7,6 @@ signal start_game
 func _ready():
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
@@ -23,7 +22,15 @@ func _on_message_timer_timeout():
 
 
 func update_score(score):
-	$ScoreLabel.text = str(score)
+	$Score.text = str(score)
+
+
+func update_heat(heat):
+	$Heat.text = str(heat)
+
+
+func update_fire_rate(rate):
+	$FireRate.text = rate
 
 
 func show_message(msg):
